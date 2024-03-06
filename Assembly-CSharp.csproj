@@ -79,6 +79,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Core\InstanceRegister.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Gameplay\StoryItem.cs" />
+    <Compile Include="Assets\Scripts\Tombstone.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Gameplay\MusicController.cs" />
