@@ -2,3 +2,6 @@ Logs
 UserSettings
 Library
 Temp
+.vs
+.vsconfig
+obj
