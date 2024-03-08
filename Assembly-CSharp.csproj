@@ -137,8 +137,8 @@
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Tiles\Custom\FenceTile.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Gameplay\CloudSystem.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
-    <Compile Include="Assets\Creator Kit - RPG\Scripts\Gameplay\ConversationScript.cs" />
     <Compile Include="Assets\Scripts\ControllerAPI.cs" />
+    <Compile Include="Assets\Creator Kit - RPG\Scripts\Gameplay\ConversationScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />

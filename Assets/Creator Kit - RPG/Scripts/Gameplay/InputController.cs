@@ -49,7 +49,6 @@ namespace RPGM.UI
 
         void CharacterControl()
         {
-            model.player
             /*
             if (Input.GetKey(KeyCode.UpArrow))
                 model.player.nextMoveCommand = Vector3.up * stepSize;
