@@ -49,6 +49,8 @@ namespace RPGM.UI
 
         void CharacterControl()
         {
+            model.player
+            /*
             if (Input.GetKey(KeyCode.UpArrow))
                 model.player.nextMoveCommand = Vector3.up * stepSize;
             else if (Input.GetKey(KeyCode.DownArrow))
@@ -59,6 +61,7 @@ namespace RPGM.UI
                 model.player.nextMoveCommand = Vector3.right * stepSize;
             else
                 model.player.nextMoveCommand = Vector3.zero;
+            */
         }
     }
 }
