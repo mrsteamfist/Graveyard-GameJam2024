@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tombstone : MonoBehaviour
@@ -70,5 +68,10 @@ public class Tombstone : MonoBehaviour
                     break;
             }
         }
+    }
+
+    internal void LoadSaved(Tombstone tombstone)
+    {
+        TombstoneState = tombstone.TombstoneState;
     }
 }

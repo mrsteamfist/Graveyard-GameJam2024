@@ -17297,8 +17297,36 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1318976432026030867, guid: d96c0846c7d644f72bfbf301de1def5c,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1442670344}
   m_SourcePrefab: {fileID: 100100000, guid: d96c0846c7d644f72bfbf301de1def5c, type: 3}
+--- !u!1 &1442670343 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1318976432026030867, guid: d96c0846c7d644f72bfbf301de1def5c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1442670342}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1442670344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442670343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe47c0458e106c04aaf91ec747696f5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tombstones:
+  - {fileID: 1964682296}
+  DaySceneIndex: 0
+  NightSceneIndex: 1
+  Player: {fileID: 1781258415}
+  Lantern: {fileID: 1442670343}
 --- !u!1 &1535807631 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8171158353334016015, guid: 84535a21e4ab6412690b5fa8acc3908e,
@@ -17725,6 +17753,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43b460673e0f3fb41a619952aa32fcbf, type: 3}
+--- !u!114 &1964682296 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -8243282301739372572, guid: 43b460673e0f3fb41a619952aa32fcbf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1964682295}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549f91c749d17d24c90a20c2f2f1d598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2080879945
 GameObject:
   m_ObjectHideFlags: 0

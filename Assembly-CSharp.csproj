@@ -92,6 +92,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Gameplay\FadingSpriteSystem.cs" />
     <Compile Include="Assets\Scripts\MonsterSpawner.cs" />
+    <Compile Include="Assets\Scripts\StateManager.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Gameplay\CharacterController2D.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Core\Schedule.cs" />
@@ -143,6 +144,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
+    <Compile Include="Assets\Scripts\Serializers.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Tiles\Isometric Rule Tile\IsometricRuleTile.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Gameplay\FadingSprite.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Tiles\Hexagonal Rule Tile\HexagonalRuleTile.cs" />
