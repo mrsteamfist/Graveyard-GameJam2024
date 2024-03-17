@@ -1,12 +1,10 @@
 using RPGM.Gameplay;
-using RPGM.UI;
-using System.Collections;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 
 [CustomEditor(typeof(StateManager))]
 public class StateManagerEditor : Editor
@@ -18,74 +16,74 @@ public class StateManagerEditor : Editor
         StateManager stateMgr = (StateManager)target;
         if (GUILayout.Button("Load Night"))
         {
-            stateMgr.StartCoroutine(stateMgr.LoadNight());
-
+            stateMgr.LoadNight();
         }
 
         if (GUILayout.Button("Load Day"))
         {
-            stateMgr.StartCoroutine(stateMgr.LoadDay());
+            stateMgr.LoadDay();
+        }
+
+        if (GUILayout.Button("Open Main Menu"))
+        {
+            stateMgr.OpenMainMenu();
+        }
+
+        if (GUILayout.Button("Open Start Menu"))
+        {
+            stateMgr.OpenStartMenu();
         }
     }
 }
-    
+
 public class StateManager : MonoBehaviour
 {
     private static StateManager _stateManager;
 
     [HideInInspector]
     public static StateManager Instance
-    { 
-        get 
-        { 
+    {
+        get
+        {
             if (_stateManager == null)
             {
                 _stateManager = FindFirstObjectByType<StateManager>();
             }
-            return _stateManager; 
-        } 
+            return _stateManager;
+        }
     }
 
     public Tombstone[] Tombstones;
-    public int DaySceneIndex = 0;
-    public int NightSceneIndex = 1;
     public CharacterController2D Player;
     public GameObject Lantern;
     public Canvas StartMenu;
     public Canvas MainMenu;
+    public Light2D globalLight;
+    public Color nightColor = new Color(.16f, .16f, .8f);
+    public Color dayColor = Color.white;
 
     private MemoryStream _savedData = new MemoryStream();
 
-    public IEnumerator LoadDay()
+    public void OpenMainMenu()
     {
         MainMenu.gameObject.SetActive(true);
-        Debug.Log("Saving state");
-        SaveState();
-        Debug.Log("Closing Night");
-        AsyncOperation unload = SceneManager.UnloadSceneAsync(NightSceneIndex);
-        while (unload?.isDone == false)
-        {
-            yield return null;
-        }
-        Debug.Log("Opening Day");
-        SceneManager.LoadScene(DaySceneIndex);
-        LoadState();
     }
 
-    public IEnumerator LoadNight()
+    public void OpenStartMenu()
     {
         StartMenu.gameObject.SetActive(true);
-        Debug.Log("Saving state");
-        SaveState();
-        Debug.Log("Closing Day");
-        AsyncOperation unload = SceneManager.UnloadSceneAsync(DaySceneIndex);
-        while (unload?.isDone == false)
-        {
-            yield return null;
-        }
-        Debug.Log("Opening Night");
-        SceneManager.LoadScene(NightSceneIndex);
-        LoadState();
+    }
+
+    public void LoadDay()
+    {
+        Debug.Log("Day Time");
+        globalLight.color = dayColor;
+    }
+
+    public void LoadNight()
+    {
+        Debug.Log("Night Time");
+        globalLight.color = nightColor;
     }
 
     void Awake()
@@ -124,7 +122,8 @@ public class StateManager : MonoBehaviour
         Lantern.GetComponent<Transform>().position = gameState.Lantern;
     }
 
-    public static BinaryFormatter GetBinaryFormatter() {
+    public static BinaryFormatter GetBinaryFormatter()
+    {
         BinaryFormatter formatter = new BinaryFormatter();
         SurrogateSelector selector = new SurrogateSelector();
 

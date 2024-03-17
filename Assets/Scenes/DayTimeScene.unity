@@ -3284,11 +3284,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1355421718859665794, guid: a6ecdc63374074e6eb42a738a5683a91,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 67515fdad6292404c85d7d34ae77df6b, type: 2}
     - target: {fileID: 2675606033952295588, guid: a6ecdc63374074e6eb42a738a5683a91,
         type: 3}
       propertyPath: m_ChunkCullingBounds.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2675606033952295588, guid: a6ecdc63374074e6eb42a738a5683a91,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 67515fdad6292404c85d7d34ae77df6b, type: 2}
     - target: {fileID: 6576607644387126882, guid: a6ecdc63374074e6eb42a738a5683a91,
         type: 3}
       propertyPath: m_Size.x
@@ -15590,7 +15600,7 @@ PrefabInstance:
     - target: {fileID: 7195864304880846418, guid: a6ecdc63374074e6eb42a738a5683a91,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[4].second.m_AnimationSpeed
-      value: 3.0000002
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7195864304880846418, guid: a6ecdc63374074e6eb42a738a5683a91,
         type: 3}
@@ -17634,7 +17644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &903397168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17913,16 +17923,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 2
-  m_LightType: 2
+  m_LightType: 4
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.745283, g: 0.34100214, b: 0.34100214, a: 1}
-  m_Intensity: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000
-  m_LightCookieSprite: {fileID: 21300000, guid: f22540e8ea335034b92c27795aa254c6,
-    type: 3}
+  m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
@@ -17930,15 +17939,15 @@ MonoBehaviour:
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
-  m_ShadowsEnabled: 1
+  m_ShadowsEnabled: 0
   m_ShadowIntensity: 0.75
   m_ShadowSoftness: 0.3
   m_ShadowSoftnessFalloffIntensity: 0.5
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0, y: 0.5, z: 0}
-    m_Extent: {x: 0.5, y: 0.5, z: 0}
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -18304,12 +18313,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Tombstones:
   - {fileID: 1964682296}
-  DaySceneIndex: 0
-  NightSceneIndex: 1
   Player: {fileID: 1781258415}
   Lantern: {fileID: 1442670343}
   StartMenu: {fileID: 903397170}
   MainMenu: {fileID: 2076484662}
+  globalLight: {fileID: 1143017776}
+  nightColor: {r: 0.16, g: 0.16, b: 0.8, a: 1}
+  dayColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1535807631 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8171158353334016015, guid: 84535a21e4ab6412690b5fa8acc3908e,
@@ -18869,6 +18879,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4083755274457177412, guid: 31e81dd429f017348a8d787855c34990,
         type: 3}
+    - target: {fileID: -1986798304152254558, guid: 43b460673e0f3fb41a619952aa32fcbf,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1986798304152254558, guid: 43b460673e0f3fb41a619952aa32fcbf,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1986798304152254558, guid: 43b460673e0f3fb41a619952aa32fcbf,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1986798304152254558, guid: 43b460673e0f3fb41a619952aa32fcbf,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1986798304152254558, guid: 43b460673e0f3fb41a619952aa32fcbf,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 67515fdad6292404c85d7d34ae77df6b, type: 2}
     - target: {fileID: 1212282500882223042, guid: 43b460673e0f3fb41a619952aa32fcbf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18923,6 +18958,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tombstone
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938074875405400802, guid: 43b460673e0f3fb41a619952aa32fcbf,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19092,7 +19132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2076484660
 MonoBehaviour:
   m_ObjectHideFlags: 0
