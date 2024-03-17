@@ -1,4 +1,5 @@
 using RPGM.Gameplay;
+using RPGM.UI;
 using System.Collections;
 using System.IO;
 using System.Runtime.Serialization;
@@ -50,11 +51,14 @@ public class StateManager : MonoBehaviour
     public int NightSceneIndex = 1;
     public CharacterController2D Player;
     public GameObject Lantern;
+    public Canvas StartMenu;
+    public Canvas MainMenu;
 
     private MemoryStream _savedData = new MemoryStream();
 
     public IEnumerator LoadDay()
     {
+        MainMenu.gameObject.SetActive(true);
         Debug.Log("Saving state");
         SaveState();
         Debug.Log("Closing Night");
@@ -70,6 +74,7 @@ public class StateManager : MonoBehaviour
 
     public IEnumerator LoadNight()
     {
+        StartMenu.gameObject.SetActive(true);
         Debug.Log("Saving state");
         SaveState();
         Debug.Log("Closing Day");
@@ -85,7 +90,14 @@ public class StateManager : MonoBehaviour
 
     void Awake()
     {
+        StartMenu.gameObject.SetActive(true);
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void CloseMainMenu()
+    {
+        MainMenu.gameObject.SetActive(false);
+        StartMenu.gameObject.SetActive(false);
     }
 
     public void SaveState()
