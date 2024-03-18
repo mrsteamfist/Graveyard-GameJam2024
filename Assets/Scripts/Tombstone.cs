@@ -1,5 +1,11 @@
+using Graveyard;
+using RPGM.Core;
+using RPGM.Gameplay;
 using UnityEngine;
+using UnityEngine.Rendering;
 
+
+[ExecuteAlways]
 public class Tombstone : MonoBehaviour
 {
     public enum State
@@ -22,6 +28,35 @@ public class Tombstone : MonoBehaviour
     public Sprite HighlightSprite;
     public Sprite DamageSprite;
     public Sprite DestorySprite;
+    public ConversationScript interactConversation;
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if (interactConversation != null)
+            {
+                var ev = Schedule.Add<RPGM.Events.ShowConversation>();
+                ev.conversation = interactConversation;
+                ev.gameObject = gameObject;
+                ev.conversationItemKey = "";
+            }
+            ControllerAPI api;
+            if (collision.gameObject.tag == "Player" && (api = collision.gameObject.GetComponent<ControllerAPI>()) != null)
+            {
+                api.currentTombstone = this;
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        ControllerAPI api;
+        if (collision.gameObject.tag == "Player" && (api = collision.gameObject.GetComponent<ControllerAPI>()) != null)
+        {
+            api.currentTombstone = null;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -73,5 +108,40 @@ public class Tombstone : MonoBehaviour
     internal void LoadSaved(Tombstone tombstone)
     {
         TombstoneState = tombstone.TombstoneState;
+    }
+
+    public void TakeDamage()
+    {
+        switch (TombstoneState)
+        {
+            case State.Destroy:
+                gameObject.SetActive(false);
+                break;
+            case State.Damage:
+                TombstoneState = State.Destroy;
+                break;
+            default:
+                TombstoneState = State.Damage;
+                break;
+        }
+    }
+
+    public void Grow()
+    {
+        switch (TombstoneState)
+        {
+            case State.Destroy:
+                gameObject.SetActive(false);
+                break;
+            case State.Damage:
+                TombstoneState = State.Start;
+                break;
+            case State.Grow:
+                TombstoneState = State.Highlight;
+                break;
+            default:
+                TombstoneState = State.Grow;
+                break;
+        }
     }
 }

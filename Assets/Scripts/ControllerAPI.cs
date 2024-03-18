@@ -39,11 +39,15 @@ namespace Graveyard
         public Quaternion lanternRightRot = new(90f, 0f, 0f, 0f);
         public bool ManualSetFacing = false;
 
+        [HideInInspector]
+        public Tombstone currentTombstone;
+
         private void Awake()
         {
             controls = new RPGGraveyard();
             controls.Player.Move.performed += ctx => nextMoveCommand = ctx.ReadValue<Vector2>();
             controls.Player.Move.canceled += ctx => nextMoveCommand = Vector2.zero;
+            controls.Player.Interact.performed += ctx => currentTombstone?.Grow();
         }
 
         void OnEnable()

@@ -11,9 +11,12 @@ GameObject:
   - component: {fileID: 1212282500882223042}
   - component: {fileID: -8243282301739372572}
   - component: {fileID: -1986798304152254558}
+  - component: {fileID: -2041096484829528510}
+  - component: {fileID: -630358576053984562}
+  - component: {fileID: 1849212096482522668}
   m_Layer: 0
   m_Name: Tombstone
-  m_TagString: Untagged
+  m_TagString: Tombstone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,12 +50,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: -1986798304152254558}
   TombstoneState: 0
-  PlaceholderSprite: {fileID: 21300008, guid: 78ad6eb3988a8e440bbf2a9ecc2d918f, type: 3}
-  StartSprite: {fileID: 21300016, guid: a4dbce958f01af8489942a973bfe20c3, type: 3}
-  GrowSprite: {fileID: 21300096, guid: 3f198c94b65508c44a32b4b4072bb419, type: 3}
-  HighlightSprite: {fileID: 21300006, guid: a4dbce958f01af8489942a973bfe20c3, type: 3}
-  DamageSprite: {fileID: 21300010, guid: a4dbce958f01af8489942a973bfe20c3, type: 3}
-  DestorySprite: {fileID: 21300048, guid: 3f198c94b65508c44a32b4b4072bb419, type: 3}
+  PlaceholderSprite: {fileID: 21300012, guid: 3fee7df828e6f284bbcf208bce9c5e21, type: 3}
+  StartSprite: {fileID: -7519750507152890081, guid: dc735f000fba8a74f858153608b5bfa4,
+    type: 3}
+  GrowSprite: {fileID: 4083755274457177412, guid: 31e81dd429f017348a8d787855c34990,
+    type: 3}
+  HighlightSprite: {fileID: 4083755274457177412, guid: 31e81dd429f017348a8d787855c34990,
+    type: 3}
+  DamageSprite: {fileID: 6501094846706931014, guid: dc735f000fba8a74f858153608b5bfa4,
+    type: 3}
+  DestorySprite: {fileID: -8675295629921095953, guid: 31e81dd429f017348a8d787855c34990,
+    type: 3}
+  interactConversation: {fileID: 1849212096482522668}
 --- !u!212 &-1986798304152254558
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -96,7 +105,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300064, guid: 3f198c94b65508c44a32b4b4072bb419, type: 3}
+  m_Sprite: {fileID: 21300012, guid: 3fee7df828e6f284bbcf208bce9c5e21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,3 +116,95 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &-2041096484829528510
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8938074875405400802}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &-630358576053984562
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8938074875405400802}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.5}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1849212096482522668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8938074875405400802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acd99916876a6405980838d7635b65cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - id: T.0
+    text: Interact to grow
+    image: {fileID: 0}
+    audio: {fileID: 0}
+    quest: {fileID: 0}
+    options: []

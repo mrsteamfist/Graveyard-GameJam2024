@@ -58,6 +58,13 @@ public class MonsterSpawner : MonoBehaviour
             return;
         }
         MonsterInstance = Instantiate(MonsterPrefab, transform, true);
+        MonsterInstance.GetComponent<Monster>().OnDeath += MonsterSpawner_OnDeath;
+    }
+
+    private void MonsterSpawner_OnDeath(object sender, System.EventArgs e)
+    {
+        MonsterInstance = null;
+        
     }
 
     public void MoveMonster()
