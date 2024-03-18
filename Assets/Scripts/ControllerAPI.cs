@@ -64,9 +64,9 @@ namespace Graveyard
                 Vector2 pos = (Vector2)characterPosition.position + nextMoveCommand * moveSpeed * Time.fixedDeltaTime;
                 characterPosition.position = SceneCamera.RoundToPixel(pos);
             }
-            if (Lantern != null && !HasLantern)
+            if (Lantern != null)
             {
-                Lantern.gameObject.SetActive(false);
+                Lantern.gameObject.SetActive(HasLantern);
             }
 
             if (spriteRenderer != null)
@@ -79,7 +79,7 @@ namespace Graveyard
                         if (Lantern != null && HasLantern)
                         {
                             Lantern.transform.rotation = lanternLeftRot;
-                            Lantern.transform.position = lanternLeftPos;
+                            Lantern.transform.localPosition = lanternLeftPos;
                         }
                         break;
                     case Facing.Right:
@@ -88,7 +88,7 @@ namespace Graveyard
                         if (Lantern != null && HasLantern)
                         {
                             Lantern.transform.rotation = lanternRightRot;
-                            Lantern.transform.position = lanternRightPos;
+                            Lantern.transform.localPosition = lanternRightPos;
                         }
                         break;
                     case Facing.Top:
@@ -96,7 +96,7 @@ namespace Graveyard
                         if (Lantern != null && HasLantern)
                         {
                             Lantern.transform.rotation = lanternTopRot;
-                            Lantern.transform.position = lanternTopPos;
+                            Lantern.transform.localPosition = lanternTopPos;
                         }
                         break;
                     default: // Bottom
@@ -104,7 +104,7 @@ namespace Graveyard
                         if (Lantern != null && HasLantern)
                         {
                             Lantern.transform.rotation = lanternBottomRot;
-                            Lantern.transform.position = lanternBottomPos;
+                            Lantern.transform.localPosition = lanternBottomPos;
                         }
                         break;
                 }

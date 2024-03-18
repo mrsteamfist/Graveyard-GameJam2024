@@ -184,7 +184,7 @@ PrefabInstance:
     - target: {fileID: 3273605809934700987, guid: 1c14ebde4b5e54881a67b686f46e6b1d,
         type: 3}
       propertyPath: orthographic size
-      value: 5.671875
+      value: 3.6914062
       objectReference: {fileID: 0}
     - target: {fileID: 3273605809934700987, guid: 1c14ebde4b5e54881a67b686f46e6b1d,
         type: 3}
@@ -15580,7 +15580,7 @@ PrefabInstance:
     - target: {fileID: 7195864304880846418, guid: a6ecdc63374074e6eb42a738a5683a91,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
-      value: 3.0000002
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7195864304880846418, guid: a6ecdc63374074e6eb42a738a5683a91,
         type: 3}
@@ -15590,7 +15590,7 @@ PrefabInstance:
     - target: {fileID: 7195864304880846418, guid: a6ecdc63374074e6eb42a738a5683a91,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[2].second.m_AnimationSpeed
-      value: 3
+      value: 3.0000002
       objectReference: {fileID: 0}
     - target: {fileID: 7195864304880846418, guid: a6ecdc63374074e6eb42a738a5683a91,
         type: 3}
@@ -15660,7 +15660,7 @@ PrefabInstance:
     - target: {fileID: 7195864304880846418, guid: a6ecdc63374074e6eb42a738a5683a91,
         type: 3}
       propertyPath: m_AnimatedTiles.Array.data[16].second.m_AnimationSpeed
-      value: 3.0000002
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7195864304880846418, guid: a6ecdc63374074e6eb42a738a5683a91,
         type: 3}
@@ -17219,7 +17219,7 @@ PrefabInstance:
     - target: {fileID: 1481126516830738366, guid: ab3f7178010354d87a5016c7d6b23a5a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.155399
+      value: -10.152778
       objectReference: {fileID: 0}
     - target: {fileID: 1481126516830738366, guid: ab3f7178010354d87a5016c7d6b23a5a,
         type: 3}
@@ -18354,7 +18354,7 @@ Transform:
   m_GameObject: {fileID: 1486966992}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1, w: -0.00000004371139}
-  m_LocalPosition: {x: 0.125, y: -0.953125, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18815,13 +18815,13 @@ MonoBehaviour:
   Lantern: {fileID: 1486966993}
   facing: 0
   HasLantern: 1
-  lanternTopPos: {x: -1, y: 2.5}
+  lanternTopPos: {x: 0, y: 1.5}
   lanternTopRot: {x: 0, y: 0, z: 0, w: 1}
-  lanternBottomPos: {x: -1, y: 0}
+  lanternBottomPos: {x: 0, y: -1}
   lanternBottomRot: {x: 0, y: 0, z: 1, w: -0.00000004371139}
-  lanternLeftPos: {x: -2, y: 1}
+  lanternLeftPos: {x: -1, y: 0}
   lanternLeftRot: {x: 0, y: 0, z: 0.70710677, w: 0.70710677}
-  lanternRightPos: {x: 0, y: 1}
+  lanternRightPos: {x: 1, y: 0}
   lanternRightRot: {x: 0.70710677, y: 0.70710677, z: -0.00000003090862, w: -0.00000003090862}
   ManualSetFacing: 0
 --- !u!1 &1907087605
@@ -18975,7 +18975,7 @@ PrefabInstance:
     - target: {fileID: 1481126516830738366, guid: ab3f7178010354d87a5016c7d6b23a5a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.155399
+      value: -10.152778
       objectReference: {fileID: 0}
     - target: {fileID: 1481126516830738366, guid: ab3f7178010354d87a5016c7d6b23a5a,
         type: 3}
@@ -19636,7 +19636,7 @@ PrefabInstance:
     - target: {fileID: 2950804947535917089, guid: 7c53998562858411aa85d8e0c4bc1333,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -28.43512
+      value: -28.427776
       objectReference: {fileID: 0}
     - target: {fileID: 2950804947535917089, guid: 7c53998562858411aa85d8e0c4bc1333,
         type: 3}
@@ -19725,7 +19725,7 @@ PrefabInstance:
     - target: {fileID: 8171158353334016012, guid: 84535a21e4ab6412690b5fa8acc3908e,
         type: 3}
       propertyPath: m_FlipX
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8171158353334016012, guid: 84535a21e4ab6412690b5fa8acc3908e,
         type: 3}
