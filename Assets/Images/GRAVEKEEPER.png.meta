@@ -1,0 +1,382 @@
+fileFormatVersion: 2
+guid: 000d002af144a4d4a8f87631bd3d2083
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7732991178257465306
+    second: GRAVEKEEPER_0
+  - first:
+      213: -5838584965244341238
+    second: GRAVEKEEPER_1
+  - first:
+      213: -7569404963269783030
+    second: GRAVEKEEPER_2
+  - first:
+      213: 9114701749964462029
+    second: GRAVEKEEPER_3
+  - first:
+      213: -8713838410808416197
+    second: GRAVEKEEPER_4
+  - first:
+      213: -6175768718935999885
+    second: GRAVEKEEPER_5
+  - first:
+      213: -95289045061991364
+    second: GRAVEKEEPER_6
+  - first:
+      213: -2878693675115475702
+    second: GRAVEKEEPER_7
+  - first:
+      213: -8623066985548641192
+    second: GRAVEKEEPER_8
+  - first:
+      213: -4245219943869297998
+    second: GRAVEKEEPER_9
+  - first:
+      213: 4466409556580774481
+    second: GRAVEKEEPER_10
+  - first:
+      213: -3840534756418235891
+    second: GRAVEKEEPER_11
+  - first:
+      213: 8009254171354527159
+    second: GRAVEKEEPER_12
+  - first:
+      213: -2913673260136080246
+    second: GRAVEKEEPER_13
+  - first:
+      213: 7850429508264302230
+    second: GRAVEKEEPER_14
+  - first:
+      213: -191104853218173475
+    second: GRAVEKEEPER_15
+  - first:
+      213: 8229964922245507258
+    second: GRAVEKEEPER_16
+  - first:
+      213: 7433665329007676697
+    second: GRAVEKEEPER_17
+  - first:
+      213: 116515546821662669
+    second: GRAVEKEEPER_18
+  - first:
+      213: 4030690160397402094
+    second: GRAVEKEEPER_19
+  - first:
+      213: -532966323866676558
+    second: GRAVEKEEPER_20
+  - first:
+      213: 7966623787650629495
+    second: GRAVEKEEPER_21
+  - first:
+      213: -3258928883368044339
+    second: GRAVEKEEPER_22
+  - first:
+      213: 7457034191450044955
+    second: GRAVEKEEPER_23
+  - first:
+      213: 3499386872492215050
+    second: GRAVEKEEPER_24
+  - first:
+      213: -3009242513023696514
+    second: GRAVEKEEPER_25
+  - first:
+      213: 4451176947003343814
+    second: GRAVEKEEPER_26
+  - first:
+      213: -8576062616897853959
+    second: GRAVEKEEPER_27
+  - first:
+      213: -4463093479402661282
+    second: GRAVEKEEPER_28
+  - first:
+      213: 4530811231766723665
+    second: GRAVEKEEPER_29
+  - first:
+      213: 8438491885290484525
+    second: GRAVEKEEPER_30
+  - first:
+      213: 7292122654764727652
+    second: GRAVEKEEPER_31
+  - first:
+      213: 2643243402052646691
+    second: GRAVEKEEPER_32
+  - first:
+      213: 513524448537556040
+    second: GRAVEKEEPER_33
+  - first:
+      213: -5559623368075981323
+    second: GRAVEKEEPER_34
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1000
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GRAVEKEEPER_0
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 3268
+        width: 1146
+        height: 1336
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adff347618a115b60800000000000000
+      internalID: 7732991178257465306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GRAVEKEEPER_1
+      rect:
+        serializedVersion: 2
+        x: 1706
+        y: 3258
+        width: 1183
+        height: 1359
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a04bca388ed29fea0800000000000000
+      internalID: -5838584965244341238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GRAVEKEEPER_2
+      rect:
+        serializedVersion: 2
+        x: 3096
+        y: 3257
+        width: 1152
+        height: 1393
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a02d9335a4214f690800000000000000
+      internalID: -7569404963269783030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GRAVEKEEPER_4
+      rect:
+        serializedVersion: 2
+        x: 4468
+        y: 3381
+        width: 393
+        height: 725
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b382c9d122a321780800000000000000
+      internalID: -8713838410808416197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GRAVEKEEPER_11
+      rect:
+        serializedVersion: 2
+        x: 1679
+        y: 1578
+        width: 1183
+        height: 1358
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d025620bcfda3bac0800000000000000
+      internalID: -3840534756418235891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GRAVEKEEPER_13
+      rect:
+        serializedVersion: 2
+        x: 3069
+        y: 1576
+        width: 1152
+        height: 1393
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8cd8027b9d8097d0800000000000000
+      internalID: -2913673260136080246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GRAVEKEEPER_14
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 1587
+        width: 1263
+        height: 1336
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 696965e5b0452fc60800000000000000
+      internalID: 7850429508264302230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: b8574166a9a5aa3488b883e1a7620c57
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      GRAVEKEEPER_24: 923920153
+      GRAVEKEEPER_33: -567220913
+      GRAVEKEEPER_35: 1684739806
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

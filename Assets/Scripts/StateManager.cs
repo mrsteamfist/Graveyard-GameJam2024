@@ -1,3 +1,4 @@
+using Graveyard;
 using RPGM.Gameplay;
 using System.IO;
 using System.Runtime.Serialization;
@@ -54,24 +55,25 @@ public class StateManager : MonoBehaviour
     }
 
     public Tombstone[] Tombstones;
-    public CharacterController2D Player;
+    public ControllerAPI Player;
     public GameObject Lantern;
     public Canvas StartMenu;
     public Canvas MainMenu;
     public Light2D globalLight;
     public Color nightColor = new Color(.16f, .16f, .8f);
     public Color dayColor = Color.white;
+    public bool AllowMenus = false;
 
     private MemoryStream _savedData = new MemoryStream();
 
     public void OpenMainMenu()
     {
-        MainMenu.gameObject.SetActive(true);
+        MainMenu.gameObject.SetActive(true && AllowMenus);
     }
 
     public void OpenStartMenu()
     {
-        StartMenu.gameObject.SetActive(true);
+        StartMenu.gameObject.SetActive(true && AllowMenus);
     }
 
     public void LoadDay()
@@ -88,7 +90,7 @@ public class StateManager : MonoBehaviour
 
     void Awake()
     {
-        StartMenu.gameObject.SetActive(true);
+        StartMenu.gameObject.SetActive(true && AllowMenus);
         DontDestroyOnLoad(gameObject);
     }
 
