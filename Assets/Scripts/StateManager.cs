@@ -1,5 +1,5 @@
 using Graveyard;
-using RPGM.Gameplay;
+using System;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -39,6 +39,16 @@ public class StateManagerEditor : Editor
 
 public class StateManager : MonoBehaviour
 {
+    public enum GameStates
+    {
+        Unset,
+        DayScreen,
+        Day,
+        NightScreen,
+        Night,
+        GameOver,
+    }
+
     private static StateManager _stateManager;
 
     [HideInInspector]
@@ -57,50 +67,136 @@ public class StateManager : MonoBehaviour
     public Tombstone[] Tombstones;
     public ControllerAPI Player;
     public GameObject Lantern;
-    public Canvas StartMenu;
-    public Canvas MainMenu;
+    public Canvas DayMenu;
+    public Canvas NightMenu;
     public Light2D globalLight;
     public Color nightColor = new Color(.16f, .16f, .8f);
     public Color dayColor = Color.white;
     public bool AllowMenus = false;
+    public int dayCycleTimeSec = 10;
+    public int nightCycleTimeSec = 10;
+    public int currentScore = 0;
 
+    public GameStates CurrentState
+    {
+        get { return _currentState; }
+        set
+        {
+            lastProcessedGameState = _currentState;
+            _currentState = value;
+        }
+    }
+
+    private GameStates lastProcessedGameState = GameStates.Unset;
+    private GameStates _currentState = GameStates.Unset;
+    private DateTime stateStart = DateTime.MinValue;
     private MemoryStream _savedData = new MemoryStream();
 
     public void OpenMainMenu()
     {
-        MainMenu.gameObject.SetActive(true && AllowMenus);
+        NightMenu.gameObject.SetActive(true && AllowMenus);
     }
 
     public void OpenStartMenu()
     {
-        StartMenu.gameObject.SetActive(true && AllowMenus);
+        DayMenu.gameObject.SetActive(true && AllowMenus);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 
     public void LoadDay()
     {
         Debug.Log("Day Time");
+        CurrentState = GameStates.Day;
+        stateStart = DateTime.Now;
+        this.Player.HasLantern = false;
         globalLight.color = dayColor;
+        Lantern.SetActive(false);
     }
 
     public void LoadNight()
     {
         Debug.Log("Night Time");
+        CurrentState = GameStates.Night;
+        stateStart = DateTime.Now;
         globalLight.color = nightColor;
+        Lantern.SetActive(true);
     }
 
     void Awake()
     {
-        StartMenu.gameObject.SetActive(true && AllowMenus);
+        if (CurrentState == GameStates.Unset || CurrentState == GameStates.GameOver)
+        {
+            CurrentState = GameStates.DayScreen;
+        }
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void FixedUpdate()
+    {
+        if (lastProcessedGameState != GameStates.Unset && lastProcessedGameState == CurrentState)
+        {
+            if (CurrentState == GameStates.Day && (DateTime.Now - stateStart).TotalSeconds > dayCycleTimeSec)
+            {
+                Debug.Log("Time is Up " + (DateTime.Now - stateStart).TotalSeconds);
+                CurrentState = GameStates.NightScreen;
+            }
+            else if (CurrentState == GameStates.Night && (DateTime.Now - stateStart).TotalSeconds > nightCycleTimeSec)
+            {
+                Debug.Log("Time is Up " + (DateTime.Now - stateStart).TotalSeconds);
+                CurrentState = GameStates.DayScreen;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        switch (CurrentState)
+        {
+            case GameStates.DayScreen:
+                if (AllowMenus)
+                {
+                    Debug.Log("Showing day screen");
+                    DayMenu.gameObject.SetActive(true);
+                }
+                else
+                    LoadDay();
+                break;
+            case GameStates.NightScreen:
+                if (AllowMenus)
+                {
+                    Debug.Log("Showing day screen");
+                    NightMenu.gameObject.SetActive(true);
+                }
+                else
+                    LoadNight();
+                break;
+            case GameStates.Day:
+                LoadDay();
+                CloseMainMenu();
+                break;
+            case GameStates.Night:
+                LoadNight();
+                CloseMainMenu();
+                break;
+        }
     }
 
     public void CloseMainMenu()
     {
-        MainMenu.gameObject.SetActive(false);
-        StartMenu.gameObject.SetActive(false);
+        NightMenu.gameObject.SetActive(false);
+        DayMenu.gameObject.SetActive(false);
+        if (CurrentState == GameStates.DayScreen)
+            CurrentState = GameStates.Day;
+        else if (CurrentState == GameStates.NightScreen)
+            CurrentState = GameStates.Night;
     }
 
-    public void SaveState()
+    public void SaveGame()
     {
         BinaryFormatter formatter = GetBinaryFormatter();
         GameState gameState = new GameState
@@ -111,7 +207,7 @@ public class StateManager : MonoBehaviour
         };
     }
 
-    public void LoadState()
+    public void LoadSaveGame()
     {
         BinaryFormatter formatter = GetBinaryFormatter();
         GameState gameState = (GameState)formatter.Deserialize(_savedData);
