@@ -67,6 +67,7 @@
     <Compile Include="Assets\Creator Kit - RPG\Cutscene\Editor\CutsceneEventDrawer.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Editor\ReadmeEditor.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Tiles\Rule Tile\Scripts\Editor\RuleTileEditor.cs" />
+    <Compile Include="Assets\Scripts\Editor\MonsterSpawnerEditor.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Tiles\Brushes\Prefab Brush\Scripts\Editor\PrefabBrush.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Editor\MechanicsGizmos.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Tiles\Brushes\Tint Brush Smooth\Scripts\Editor\TintBrushSmooth.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Tiles\Rule Override Tile\Scripts\Editor\RuleOverrideTileEditor.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Tiles\Hexagonal Rule Tile\Editor\HexagonalRuleTileEditor.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Tiles\Brushes\GameObject Brush\Scripts\Editor\GameObjectBrush.cs" />
+    <Compile Include="Assets\Scripts\Editor\StateManagerEditor.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Tiles\Brushes\Tint Brush\Scripts\Editor\TintBrush.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Editor\ConversationPieceDialog.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Tiles\Brushes\Coordinate Brush\Scripts\Editor\CoordinateBrush.cs" />

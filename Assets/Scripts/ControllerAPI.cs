@@ -1,8 +1,7 @@
-using RPGM.Gameplay;
-using System;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 
 namespace Graveyard
@@ -68,7 +67,9 @@ namespace Graveyard
 
         void OnEnable()
         {
+#if UNITY_EDITOR
             EditorApplication.update += MoveUpdate;
+#endif
             controls?.Player.Enable();
         }
 
@@ -186,7 +187,9 @@ namespace Graveyard
 
         void OnDisable()
         {
+#if UNITY_EDITOR
             EditorApplication.update -= MoveUpdate;
+#endif
             controls?.Player.Disable();
         }
 

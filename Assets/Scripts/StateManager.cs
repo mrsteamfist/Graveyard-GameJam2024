@@ -3,39 +3,8 @@ using System;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-
-[CustomEditor(typeof(StateManager))]
-public class StateManagerEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        DrawDefaultInspector();
-
-        StateManager stateMgr = (StateManager)target;
-        if (GUILayout.Button("Load Night"))
-        {
-            stateMgr.LoadNight();
-        }
-
-        if (GUILayout.Button("Load Day"))
-        {
-            stateMgr.LoadDay();
-        }
-
-        if (GUILayout.Button("Open Main Menu"))
-        {
-            stateMgr.OpenMainMenu();
-        }
-
-        if (GUILayout.Button("Open Start Menu"))
-        {
-            stateMgr.OpenStartMenu();
-        }
-    }
-}
 
 public class StateManager : MonoBehaviour
 {
@@ -46,7 +15,8 @@ public class StateManager : MonoBehaviour
         Day,
         NightScreen,
         Night,
-        GameOver,
+        Win,
+        Lost
     }
 
     private static StateManager _stateManager;
@@ -65,10 +35,13 @@ public class StateManager : MonoBehaviour
     }
 
     public Tombstone[] Tombstones;
+    public MonsterSpawner[] Spawners;
     public ControllerAPI Player;
     public GameObject Lantern;
     public Canvas DayMenu;
     public Canvas NightMenu;
+    public Canvas GameWin;
+    public Canvas GameOver;
     public Light2D globalLight;
     public Color nightColor = new Color(.16f, .16f, .8f);
     public Color dayColor = Color.white;
@@ -76,6 +49,8 @@ public class StateManager : MonoBehaviour
     public int dayCycleTimeSec = 10;
     public int nightCycleTimeSec = 10;
     public int currentScore = 0;
+    public int spawnProbability = 100;
+    public int spawnGap = 1;
 
     public GameStates CurrentState
     {
@@ -87,6 +62,8 @@ public class StateManager : MonoBehaviour
         }
     }
 
+    private DateTime lastSpawnTime = DateTime.MinValue;
+    private System.Random rng = new System.Random();
     private GameStates lastProcessedGameState = GameStates.Unset;
     private GameStates _currentState = GameStates.Unset;
     private DateTime stateStart = DateTime.MinValue;
@@ -128,7 +105,7 @@ public class StateManager : MonoBehaviour
 
     void Awake()
     {
-        if (CurrentState == GameStates.Unset || CurrentState == GameStates.GameOver)
+        if (CurrentState == GameStates.Unset)
         {
             CurrentState = GameStates.DayScreen;
         }
@@ -137,7 +114,41 @@ public class StateManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (lastProcessedGameState != GameStates.Unset && lastProcessedGameState == CurrentState)
+        if (CurrentState == GameStates.Night && rng.Next(spawnProbability) == 1 && (DateTime.Now - lastSpawnTime).TotalSeconds > spawnGap)
+        {
+            lastSpawnTime = DateTime.Now;
+            int spawnAt = rng.Next(Spawners.Length);
+            Spawners[spawnAt].SpawnMonster();
+            Spawners[spawnAt].MoveMonster();
+        }
+
+        bool didWin = true;
+        bool didLose = true;
+        foreach (var tombstone in Tombstones)
+        {
+            if (tombstone.TombstoneState != Tombstone.State.Destroy)
+            {
+                didLose = false;
+            }
+            if (tombstone.TombstoneState != Tombstone.State.Grow)
+            {
+                didWin = false;
+            }
+            if (!didWin && !didLose)
+            {
+                break;
+            }
+        }
+
+        if (didWin)
+        {
+            CurrentState = GameStates.Win;
+        }
+        else if (didLose)
+        {
+            CurrentState = GameStates.Lost;
+        }
+        else if (lastProcessedGameState != GameStates.Unset && lastProcessedGameState == CurrentState)
         {
             if (CurrentState == GameStates.Day && (DateTime.Now - stateStart).TotalSeconds > dayCycleTimeSec)
             {
@@ -184,6 +195,12 @@ public class StateManager : MonoBehaviour
             case GameStates.Night:
                 LoadNight();
                 CloseMainMenu();
+                break;
+            case GameStates.Lost:
+                GameOver.gameObject.SetActive(true);
+                break;
+            case GameStates.Win:
+                GameWin.gameObject.SetActive(true);
                 break;
         }
     }

@@ -1,10 +1,5 @@
 using Graveyard;
-using RPGM.Core;
-using RPGM.Gameplay;
-using RPGM.UI;
 using UnityEngine;
-using UnityEngine.Rendering;
-
 
 [ExecuteAlways]
 public class Tombstone : MonoBehaviour
@@ -29,17 +24,15 @@ public class Tombstone : MonoBehaviour
     public Sprite HighlightSprite;
     public Sprite DamageSprite;
     public Sprite DestorySprite;
-    public DialogController dialogController;
-    public string interactMessage;
+    public int interactMessage;
 
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (!string.IsNullOrEmpty(interactMessage))
-            {
-                dialogController.Show(GetComponent<Transform>().position, interactMessage);
-            }
+            if (TombstoneState == State.Placeholder || TombstoneState == State.Start || TombstoneState == State.Damage)
+                collision.gameObject.GetComponent<CharacterDialogManager>().ShowDialog(interactMessage);
+
             ControllerAPI api;
             if (collision.gameObject.tag == "Player" && (api = collision.gameObject.GetComponent<ControllerAPI>()) != null)
             {
@@ -54,7 +47,7 @@ public class Tombstone : MonoBehaviour
         if (collision.gameObject.tag == "Player" && (api = collision.gameObject.GetComponent<ControllerAPI>()) != null)
         {
             api.currentTombstone = null;
-            dialogController.Hide();
+            collision.gameObject.GetComponent<CharacterDialogManager>().HideDialog();
         }
     }
 
@@ -82,7 +75,6 @@ public class Tombstone : MonoBehaviour
             {
                 case State.Placeholder:
                     SpriteRenderer.sprite = PlaceholderSprite;
-                    dialogController.Hide();
                     break;
                 case State.Start:
                     SpriteRenderer.sprite = StartSprite;
@@ -92,15 +84,12 @@ public class Tombstone : MonoBehaviour
                     break;
                 case State.Highlight:
                     SpriteRenderer.sprite = HighlightSprite;
-                    dialogController.Hide();
                     break;
                 case State.Damage:
                     SpriteRenderer.sprite = DamageSprite;
-                    dialogController.Hide();
                     break;
                 case State.Destroy:
                     SpriteRenderer.sprite = DestorySprite;
-                    dialogController.Hide();
                     break;
                 default:
                     Debug.LogError($"Unknown Tombstone States {TombstoneState}");

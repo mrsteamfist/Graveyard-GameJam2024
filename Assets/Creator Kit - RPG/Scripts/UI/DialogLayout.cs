@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-
 namespace RPGM.UI
 {
-
     [ExecuteInEditMode]
     public class DialogLayout : MonoBehaviour
     {

@@ -1,20 +1,15 @@
-﻿using RPGM.Core;
-using RPGM.Gameplay;
-using RPGM.UI;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Graveyard
 {
     public class Lantern : MonoBehaviour
     {
-        public bool isPlayerTouching = false;
-        public DialogController dialogController;
-        public string interactMessage;
+        public bool isPlayerTouching = false; //Todo: do I need this anymore?
+        public int interactMessage = 0;
 
         private void Awake()
         {
             isPlayerTouching = false;
-            dialogController.Hide();
         }
         
         void OnTriggerEnter2D(Collider2D collision)
@@ -22,11 +17,7 @@ namespace Graveyard
             if (collision.gameObject.tag == "Player")
             {
                 isPlayerTouching = true;
-                
-                if (!string.IsNullOrEmpty(interactMessage))
-                {
-                    dialogController.Show(GetComponent<Transform>().position, interactMessage);
-                }
+                collision.gameObject.GetComponent<CharacterDialogManager>().ShowDialog(interactMessage);
             }
         }
 
@@ -35,7 +26,7 @@ namespace Graveyard
             if (collision.gameObject.tag == "Player")
             {
                 isPlayerTouching = true;
-                dialogController.Hide();
+                collision.gameObject.GetComponent<CharacterDialogManager>().HideDialog();
             }
         }
     }
