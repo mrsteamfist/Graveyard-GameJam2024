@@ -2,6 +2,7 @@ using RPGM.Gameplay;
 using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 
 namespace Graveyard
@@ -26,7 +27,11 @@ namespace Graveyard
         public Sprite bottomFacing;
         public Sprite leftFacing;
         public Sprite topFacing;
+        public Sprite lanternBottomFacing;
+        public Sprite lanternLeftFacing;
+        public Sprite lanternTopFacing;
         public Transform Lantern;
+        public Lantern pickupAble;
         public Facing facing = Facing.Bottom;
         public bool HasLantern = false;
         public Vector2 lanternTopPos = new Vector2(0, 1);
@@ -48,12 +53,85 @@ namespace Graveyard
             controls.Player.Move.performed += ctx => nextMoveCommand = ctx.ReadValue<Vector2>();
             controls.Player.Move.canceled += ctx => nextMoveCommand = Vector2.zero;
             controls.Player.Interact.performed += ctx => currentTombstone?.Grow();
+            controls.Player.Interact.performed += ctx => InteractWithLantern();
+        }
+
+        private void InteractWithLantern()
+        {
+            if (pickupAble.isPlayerTouching)
+            {
+                HasLantern = true;
+                pickupAble.gameObject.SetActive(false);
+                pickupAble.isPlayerTouching = false;
+            }
         }
 
         void OnEnable()
         {
             EditorApplication.update += MoveUpdate;
             controls?.Player.Enable();
+        }
+
+        private void SetCharFacing()
+        {
+            if (spriteRenderer == null)
+                return;
+
+            switch (facing)
+            {
+                case Facing.Left:
+                    spriteRenderer.sprite = leftFacing;
+                    spriteRenderer.flipX = false;
+                    break;
+                case Facing.Right:
+                    spriteRenderer.sprite = leftFacing;
+                    spriteRenderer.flipX = true;
+                    break;
+                case Facing.Top:
+                    spriteRenderer.sprite = topFacing;
+                    break;
+                default: // Bottom
+                    spriteRenderer.sprite = bottomFacing;
+                    break;
+            }
+        }
+
+        private void SetCharWithLantern()
+        {
+            if (spriteRenderer == null)
+                return;
+
+            if (Lantern == null || !HasLantern)
+            {
+                SetCharFacing();
+                return;
+            }
+
+            switch (facing)
+            {
+                case Facing.Left:
+                    spriteRenderer.sprite = lanternLeftFacing;
+                    spriteRenderer.flipX = false;
+                    Lantern.transform.rotation = lanternLeftRot;
+                    Lantern.transform.localPosition = lanternLeftPos;
+                    break;
+                case Facing.Right:
+                    spriteRenderer.sprite = lanternLeftFacing;
+                    spriteRenderer.flipX = true;
+                    Lantern.transform.rotation = lanternRightRot;
+                    Lantern.transform.localPosition = lanternRightPos;
+                    break;
+                case Facing.Top:
+                    spriteRenderer.sprite = lanternTopFacing;
+                    Lantern.transform.rotation = lanternTopRot;
+                    Lantern.transform.localPosition = lanternTopPos;
+                    break;
+                default: // Bottom
+                    spriteRenderer.sprite = lanternBottomFacing;
+                    Lantern.transform.rotation = lanternBottomRot;
+                    Lantern.transform.localPosition = lanternBottomPos;
+                    break;
+            }
         }
 
         private void MoveUpdate()
@@ -72,47 +150,10 @@ namespace Graveyard
             {
                 Lantern.gameObject.SetActive(HasLantern);
             }
-
-            if (spriteRenderer != null)
-            {
-                switch (facing)
-                {
-                    case Facing.Left:
-                        spriteRenderer.sprite = leftFacing;
-                        spriteRenderer.flipX = false;
-                        if (Lantern != null && HasLantern)
-                        {
-                            Lantern.transform.rotation = lanternLeftRot;
-                            Lantern.transform.localPosition = lanternLeftPos;
-                        }
-                        break;
-                    case Facing.Right:
-                        spriteRenderer.sprite = leftFacing;
-                        spriteRenderer.flipX = true;
-                        if (Lantern != null && HasLantern)
-                        {
-                            Lantern.transform.rotation = lanternRightRot;
-                            Lantern.transform.localPosition = lanternRightPos;
-                        }
-                        break;
-                    case Facing.Top:
-                        spriteRenderer.sprite = topFacing;
-                        if (Lantern != null && HasLantern)
-                        {
-                            Lantern.transform.rotation = lanternTopRot;
-                            Lantern.transform.localPosition = lanternTopPos;
-                        }
-                        break;
-                    default: // Bottom
-                        spriteRenderer.sprite = bottomFacing;
-                        if (Lantern != null && HasLantern)
-                        {
-                            Lantern.transform.rotation = lanternBottomRot;
-                            Lantern.transform.localPosition = lanternBottomPos;
-                        }
-                        break;
-                }
-            }
+            if (HasLantern)
+                SetCharWithLantern();
+            else
+                SetCharFacing();
         }
 
         static bool IsInbetween(float pos, float small, float large)

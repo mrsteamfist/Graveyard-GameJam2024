@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: -1986798304152254558}
   - component: {fileID: -2041096484829528510}
   - component: {fileID: -630358576053984562}
-  - component: {fileID: 1849212096482522668}
   m_Layer: 0
   m_Name: Tombstone
   m_TagString: Tombstone
@@ -61,7 +60,8 @@ MonoBehaviour:
     type: 3}
   DestorySprite: {fileID: -8675295629921095953, guid: 31e81dd429f017348a8d787855c34990,
     type: 3}
-  interactConversation: {fileID: 1849212096482522668}
+  dialogController: {fileID: 0}
+  interactMessage: Press E to grow
 --- !u!212 &-1986798304152254558
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -187,24 +187,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 3}
   m_EdgeRadius: 0
---- !u!114 &1849212096482522668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8938074875405400802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acd99916876a6405980838d7635b65cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items:
-  - id: T.0
-    text: Interact to grow
-    image: {fileID: 0}
-    audio: {fileID: 0}
-    quest: {fileID: 0}
-    options: []

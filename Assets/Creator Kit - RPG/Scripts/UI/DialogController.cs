@@ -72,7 +72,8 @@ namespace RPGM.UI
             d.gameObject.SetActive(true);
             d.SetText(text);
             SetPosition(position);
-            model.input.ChangeState(InputController.State.DialogControl);
+            if (model != null && model.input != null)
+                model.input.ChangeState(InputController.State.DialogControl);
             buttonCount = 0;
             selectedButton = -1;
         }

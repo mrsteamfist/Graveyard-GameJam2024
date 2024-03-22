@@ -155,6 +155,8 @@ public class StateManager : MonoBehaviour
             }
         }
 
+        stateStart = DateTime.Now;
+
         switch (CurrentState)
         {
             case GameStates.DayScreen:

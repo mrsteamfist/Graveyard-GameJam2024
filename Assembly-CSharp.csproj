@@ -85,6 +85,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Gameplay\StartQuest.cs" />
+    <Compile Include="Assets\Scripts\Lantern.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Gameplay\NPCController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Creator Kit - RPG\Scripts\Core\Event.cs" />
