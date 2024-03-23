@@ -21,7 +21,6 @@ public class Tombstone : MonoBehaviour
     public Sprite PlaceholderSprite;
     public Sprite StartSprite;
     public Sprite GrowSprite;
-    public Sprite HighlightSprite;
     public Sprite DamageSprite;
     public Sprite DestorySprite;
     public int interactMessage;
@@ -30,7 +29,7 @@ public class Tombstone : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (TombstoneState == State.Placeholder || TombstoneState == State.Start || TombstoneState == State.Damage)
+            if (TombstoneState == State.Placeholder || TombstoneState == State.Start || TombstoneState == State.Damage || TombstoneState == State.Destroy)
                 collision.gameObject.GetComponent<CharacterDialogManager>().ShowDialog(interactMessage);
 
             ControllerAPI api;
@@ -82,9 +81,6 @@ public class Tombstone : MonoBehaviour
                 case State.Grow:
                     SpriteRenderer.sprite = GrowSprite;
                     break;
-                case State.Highlight:
-                    SpriteRenderer.sprite = HighlightSprite;
-                    break;
                 case State.Damage:
                     SpriteRenderer.sprite = DamageSprite;
                     break;
@@ -108,8 +104,6 @@ public class Tombstone : MonoBehaviour
         switch (TombstoneState)
         {
             case State.Destroy:
-                gameObject.SetActive(false);
-                break;
             case State.Damage:
                 TombstoneState = State.Destroy;
                 break;
@@ -117,24 +111,23 @@ public class Tombstone : MonoBehaviour
                 TombstoneState = State.Damage;
                 break;
         }
+        StateManager.Instance.PlayDmgSfx();
     }
 
     public void Grow()
     {
         switch (TombstoneState)
         {
-            case State.Destroy:
-                gameObject.SetActive(false);
-                break;
-            case State.Damage:
+            case State.Placeholder:
                 TombstoneState = State.Start;
                 break;
-            case State.Grow:
-                TombstoneState = State.Highlight;
+            case State.Destroy:
+                TombstoneState = State.Placeholder;
                 break;
             default:
                 TombstoneState = State.Grow;
                 break;
         }
+        StateManager.Instance.PlayGrowSfx();
     }
 }

@@ -1,9 +1,11 @@
 using Graveyard;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Rendering.Universal;
 
 public class StateManager : MonoBehaviour
@@ -34,8 +36,8 @@ public class StateManager : MonoBehaviour
         }
     }
 
-    public Tombstone[] Tombstones;
-    public MonsterSpawner[] Spawners;
+    public GameObject TombstoneParent;
+    public GameObject MonsterParent;
     public ControllerAPI Player;
     public GameObject Lantern;
     public Canvas DayMenu;
@@ -51,6 +53,15 @@ public class StateManager : MonoBehaviour
     public int currentScore = 0;
     public int spawnProbability = 100;
     public int spawnGap = 1;
+    public AudioClip daySong;
+    public AudioClip nightSong;
+    public AudioClip transitionSfx;
+    public AudioClip damageSfx;
+    public AudioClip growSfx;
+    public AudioClip gameWinSong;
+    public AudioClip gameLoseSong;
+    public AudioSource bgmPlayer;
+    public AudioSource sfxPlayer;
 
     public GameStates CurrentState
     {
@@ -61,6 +72,9 @@ public class StateManager : MonoBehaviour
             _currentState = value;
         }
     }
+
+    private Tombstone[] Tombstones;
+    private MonsterSpawner[] Spawners;
 
     private DateTime lastSpawnTime = DateTime.MinValue;
     private System.Random rng = new System.Random();
@@ -108,6 +122,30 @@ public class StateManager : MonoBehaviour
         if (CurrentState == GameStates.Unset)
         {
             CurrentState = GameStates.DayScreen;
+        }
+        if (TombstoneParent != null)
+        {
+            Tombstones = TombstoneParent.gameObject.GetComponentsInChildren<Tombstone>();
+        }
+        else
+        {
+            Debug.LogError("Tombstone parent not set");
+        }
+        if (MonsterParent != null)
+        {
+            Spawners = MonsterParent.GetComponentsInChildren<MonsterSpawner>();
+            if (Tombstones != null && Tombstones.Length > 0)
+            {
+                for (int i = 0; i < Spawners.Length; i++)
+                {
+                    int target = rng.Next(Tombstones.Length);
+                    Spawners[i].Target = Tombstones[target].GetComponent<Transform>();
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("Monster spawner parent not set");
         }
         DontDestroyOnLoad(gameObject);
     }
@@ -171,6 +209,8 @@ public class StateManager : MonoBehaviour
         switch (CurrentState)
         {
             case GameStates.DayScreen:
+                bgmPlayer.clip = daySong;
+                bgmPlayer.Play();
                 if (AllowMenus)
                 {
                     Debug.Log("Showing day screen");
@@ -180,6 +220,8 @@ public class StateManager : MonoBehaviour
                     LoadDay();
                 break;
             case GameStates.NightScreen:
+                bgmPlayer.clip = nightSong;
+                bgmPlayer.Play();
                 if (AllowMenus)
                 {
                     Debug.Log("Showing day screen");
@@ -197,12 +239,28 @@ public class StateManager : MonoBehaviour
                 CloseMainMenu();
                 break;
             case GameStates.Lost:
+                bgmPlayer.clip = gameLoseSong;
+                bgmPlayer.Play();
                 GameOver.gameObject.SetActive(true);
                 break;
             case GameStates.Win:
+                bgmPlayer.clip = gameWinSong;
+                bgmPlayer.Play();
                 GameWin.gameObject.SetActive(true);
                 break;
         }
+    }
+
+    public void PlayDmgSfx()
+    {
+        sfxPlayer.clip = damageSfx;
+        sfxPlayer.Play();
+    }
+
+    public void PlayGrowSfx()
+    {
+        sfxPlayer.clip = growSfx;
+        sfxPlayer.Play();
     }
 
     public void CloseMainMenu()

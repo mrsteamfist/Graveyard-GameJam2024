@@ -49,19 +49,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpriteRenderer: {fileID: -1986798304152254558}
   TombstoneState: 0
-  PlaceholderSprite: {fileID: 21300012, guid: 3fee7df828e6f284bbcf208bce9c5e21, type: 3}
-  StartSprite: {fileID: -7519750507152890081, guid: dc735f000fba8a74f858153608b5bfa4,
+  PlaceholderSprite: {fileID: 21300016, guid: 4567a16d0e0692048b18bfbb59a5b426, type: 3}
+  StartSprite: {fileID: 6501094846706931014, guid: dc735f000fba8a74f858153608b5bfa4,
     type: 3}
-  GrowSprite: {fileID: 4083755274457177412, guid: 31e81dd429f017348a8d787855c34990,
+  GrowSprite: {fileID: -8422058665687481998, guid: 31e81dd429f017348a8d787855c34990,
     type: 3}
-  HighlightSprite: {fileID: 4083755274457177412, guid: 31e81dd429f017348a8d787855c34990,
+  HighlightSprite: {fileID: -8422058665687481998, guid: 31e81dd429f017348a8d787855c34990,
     type: 3}
-  DamageSprite: {fileID: 6501094846706931014, guid: dc735f000fba8a74f858153608b5bfa4,
+  DamageSprite: {fileID: -7519750507152890081, guid: dc735f000fba8a74f858153608b5bfa4,
     type: 3}
-  DestorySprite: {fileID: -8675295629921095953, guid: 31e81dd429f017348a8d787855c34990,
-    type: 3}
-  dialogController: {fileID: 0}
-  interactMessage: Press E to grow
+  DestorySprite: {fileID: 21300002, guid: e10c13642d970a64cbfb16f898fcd46c, type: 3}
+  interactMessage: 0
 --- !u!212 &-1986798304152254558
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -102,8 +100,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -381475415
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300012, guid: 3fee7df828e6f284bbcf208bce9c5e21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
